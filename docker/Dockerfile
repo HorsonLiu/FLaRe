@@ -26,8 +26,8 @@ RUN cd /root && git clone https://github.com/facebookresearch/Detic.git --recurs
 RUN $PIP install --no-cache-dir --extra-index-url https://ai2thor-pypi.allenai.org ai2thor==0+966bd7758586e05d18f6181f459c0e90ba318bec
 RUN $PIP install --no-cache-dir torch==2.0.1 torchvision xformers lightning open_clip_torch
 
-# Upgrading moviepy to ensure visualization doesn't break
-RUN $PIP install --no-cache-dir --upgrade moviepy
+# moviepy must be 1.0.3
+RUN $PIP install --no-cache-dir moviepy==1.0.3
 
 # ffmpeg from conda is broken. We'll install it at a system level
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 nano -y
